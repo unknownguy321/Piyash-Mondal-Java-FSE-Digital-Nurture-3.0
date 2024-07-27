@@ -1,0 +1,122 @@
+class Task {
+    private int taskId;
+    private String taskName;
+    private String status;
+
+    public Task(int taskId, String taskName, String status) {
+        this.taskId = taskId;
+        this.taskName = taskName;
+        this.status = status;
+    }
+
+    public int getTaskId() {
+        return taskId;
+    }
+
+    public String getTaskName() {
+        return taskName;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    @Override
+    public String toString() {
+        return "Task ID: " + taskId + ", Name: " + taskName + ", Status: " + status;
+    }
+}
+
+class Node {
+    Task task;
+    Node next;
+
+    public Node(Task task) {
+        this.task = task;
+        this.next = null;
+    }
+}
+
+class SinglyLinkedList {
+    private Node head;
+
+    public SinglyLinkedList() {
+        this.head = null;
+    }
+
+    public void addTask(Task task) {
+        Node newNode = new Node(task);
+        newNode.next = head;
+        head = newNode;
+    }
+
+    public Task searchTask(int taskId) {
+        Node current = head;
+        while (current != null) {
+            if (current.task.getTaskId() == taskId) {
+                return current.task;
+            }
+            current = current.next;
+        }
+        return null;
+    }
+
+    public void traverseTasks() {
+        Node current = head;
+        while (current != null) {
+            System.out.println(current.task);
+            current = current.next;
+        }
+    }
+
+    public boolean deleteTask(int taskId) {
+        Node current = head;
+        Node previous = null;
+        while (current != null) {
+            if (current.task.getTaskId() == taskId) {
+                if (previous != null) {
+                    previous.next = current.next;
+                } else {
+                    head = current.next;
+                }
+                return true;
+            }
+            previous = current;
+            current = current.next;
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        SinglyLinkedList taskManager = new SinglyLinkedList();
+
+        // Add tasks
+        taskManager.addTask(new Task(1, "Task 1", "Incomplete"));
+        taskManager.addTask(new Task(2, "Task 2", "Incomplete"));
+        taskManager.addTask(new Task(3, "Task 3", "Complete"));
+
+        // Search for a task
+        Task foundTask = taskManager.searchTask(2);
+        if (foundTask != null) {
+            System.out.println("Found Task: " + foundTask);
+        } else {
+            System.out.println("Task not found.");
+        }
+
+        // Traverse all tasks
+        System.out.println("All Tasks:");
+        taskManager.traverseTasks();
+
+        // Delete a task
+        boolean isDeleted = taskManager.deleteTask(2);
+        if (isDeleted) {
+            System.out.println("Task 2 deleted successfully.");
+        } else {
+            System.out.println("Task 2 not found.");
+        }
+
+        // Traverse all tasks again
+        System.out.println("All Tasks after deletion:");
+        taskManager.traverseTasks();
+    }
+}
