@@ -1,0 +1,82 @@
+import java.util.List;
+import java.util.ArrayList;
+
+interface Stock {
+    void registerObserver(Observer observer);
+    void deregisterObserver(Observer observer);
+    void notifyObservers();
+}
+
+class StockMarket implements Stock {
+    private List<Observer> observers;
+    private String stockName;
+    private double stockPrice;
+
+    public StockMarket(String stockName) {
+        observers = new ArrayList<>();
+        this.stockName = stockName;
+    }
+
+    public void setStockPrice(double stockPrice) {
+        this.stockPrice = stockPrice;
+        notifyObservers();
+    }
+
+    @Override
+    public void registerObserver(Observer observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void deregisterObserver(Observer observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers() {
+        for (Observer observer : observers) {
+            observer.update(stockName, stockPrice);
+        }
+    }
+}
+
+interface Observer {
+    void update(String stockName, double stockPrice);
+}
+
+class MobileApp implements Observer {
+    @Override
+    public void update(String stockName, double stockPrice) {
+        System.out.println("Mobile App: Stock " + stockName + " has a new price: $" + stockPrice);
+    }
+}
+
+class WebApp implements Observer {
+    @Override
+    public void update(String stockName, double stockPrice) {
+        System.out.println("Web App: Stock " + stockName + " has a new price: $" + stockPrice);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a StockMarket instance
+        StockMarket stockMarket = new StockMarket("AAPL");
+
+        // Create observers
+        Observer mobileApp = new MobileApp();
+        Observer webApp = new WebApp();
+
+        // Register observers
+        stockMarket.registerObserver(mobileApp);
+        stockMarket.registerObserver(webApp);
+
+        // Update stock price and notify observers
+        stockMarket.setStockPrice(150.25);
+        stockMarket.setStockPrice(155.75);
+        
+        // Deregister an observer and update stock price
+        stockMarket.deregisterObserver(webApp);
+        stockMarket.setStockPrice(160.50);
+    }
+}
