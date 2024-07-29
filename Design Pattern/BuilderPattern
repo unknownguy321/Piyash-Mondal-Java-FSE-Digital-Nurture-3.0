@@ -1,0 +1,76 @@
+class Computer {
+    private final String CPU;
+    private final int RAM;
+    private final int Storage;
+    private final boolean hasGPU;
+    private final boolean hasWiFi;
+
+    // Private constructor to be used by the Builder
+    private Computer(Builder builder) {
+        this.CPU = builder.CPU;
+        this.RAM = builder.RAM;
+        this.Storage = builder.Storage;
+        this.hasGPU = builder.hasGPU;
+        this.hasWiFi = builder.hasWiFi;
+    }
+
+    @Override
+    public String toString() {
+        return "Computer [CPU=" + CPU + ", RAM=" + RAM + "GB, Storage=" + Storage + "GB, GPU=" + (hasGPU ? "Yes" : "No") +
+                ", WiFi=" + (hasWiFi ? "Yes" : "No") + "]";
+    }
+
+    // Static nested Builder class
+    public static class Builder {
+        private final String CPU; // Required
+        private final int RAM; // Required
+        private final int Storage; // Required
+        private boolean hasGPU = false; // Optional
+        private boolean hasWiFi = false; // Optional
+
+        // Constructor for required attributes
+        public Builder(String CPU, int RAM, int Storage) {
+            this.CPU = CPU;
+            this.RAM = RAM;
+            this.Storage = Storage;
+        }
+
+        // Methods to set optional attributes
+        public Builder withGPU(boolean hasGPU) {
+            this.hasGPU = hasGPU;
+            return this;
+        }
+
+        public Builder withWiFi(boolean hasWiFi) {
+            this.hasWiFi = hasWiFi;
+            return this;
+        }
+
+        // Build method to create the Computer instance
+        public Computer build() {
+            return new Computer(this);
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a Computer with required attributes only
+        Computer basicComputer = new Computer.Builder("Intel i5", 8, 256)
+                .build();
+        System.out.println(basicComputer);
+
+        // Create a Computer with all attributes
+        Computer gamingComputer = new Computer.Builder("AMD Ryzen 7", 16, 512)
+                .withGPU(true)
+                .withWiFi(true)
+                .build();
+        System.out.println(gamingComputer);
+
+        // Create another Computer with different configuration
+        Computer officeComputer = new Computer.Builder("Intel i7", 16, 1024)
+                .withWiFi(true)
+                .build();
+        System.out.println(officeComputer);
+    }
+}
