@@ -1,0 +1,54 @@
+public class InvestmentCalculator {
+
+    // Method to calculate factorial
+    public static int factorial(int n) {
+        if (n == 0) {
+            return 1;
+        } else {
+            return n * factorial(n - 1);
+        }
+    }
+
+    // Method to calculate future value using simple recursion
+    public static double futureValue(double currentValue, double growthRate, int periods) {
+        if (periods == 0) {
+            return currentValue;
+        } else {
+            return futureValue(currentValue * (1 + growthRate), growthRate, periods - 1);
+        }
+    }
+
+    // Method to calculate future value using memoization
+    public static double futureValueMemo(double currentValue, double growthRate, int periods, java.util.HashMap<Integer, Double> memo) {
+        if (memo == null) {
+            memo = new java.util.HashMap<>();
+        }
+        if (memo.containsKey(periods)) {
+            return memo.get(periods);
+        }
+        if (periods == 0) {
+            return currentValue;
+        } else {
+            double result = futureValueMemo(currentValue * (1 + growthRate), growthRate, periods - 1, memo);
+            memo.put(periods, result);
+            return result;
+        }
+    }
+
+    public static void main(String[] args) {
+        // Current value of an investment
+        double currentValue = 1000;
+        // Annual growth rate of 5%
+        double growthRate = 0.05;
+        // Number of years into the future
+        int periods = 10;
+
+        // Calculate future value using simple recursion
+        double fvSimple = futureValue(currentValue, growthRate, periods);
+        System.out.println("Future Value (Simple Recursion): " + fvSimple);
+
+        // Calculate future value using memoization
+        double fvMemo = futureValueMemo(currentValue, growthRate, periods, null);
+        System.out.println("Future Value (Memoization): " + fvMemo);
+    }
+}
