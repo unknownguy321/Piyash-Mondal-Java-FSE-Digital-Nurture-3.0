@@ -1,0 +1,21 @@
+Endpoint: POST /customers
+Example JSON Request Body:
+
+{
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
+
+
+Expected Response:
+
+{
+    "id": 1,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@example.com",
+    "password": "password123"
+}
