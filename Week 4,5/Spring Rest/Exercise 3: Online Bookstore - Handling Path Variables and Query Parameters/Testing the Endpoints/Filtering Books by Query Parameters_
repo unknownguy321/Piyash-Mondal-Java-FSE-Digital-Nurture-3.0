@@ -1,0 +1,23 @@
+Endpoint: GET /books/search
+Example Requests:
+GET /books/search?title=Java
+GET /books/search?author=Bloch
+GET /books/search?title=Java&author=Bloch
+Expected Response:
+
+[
+    {
+        "id": 1,
+        "title": "Effective Java",
+        "author": "Joshua Bloch",
+        "price": 45.0,
+        "isbn": "978-0134685991"
+    },
+    {
+        "id": 3,
+        "title": "Java Concurrency in Practice",
+        "author": "Brian Goetz",
+        "price": 50.0,
+        "isbn": "978-0321349606"
+    }
+]
