@@ -1,0 +1,8 @@
+Endpoint: POST /books
+Example Request Body:
+
+{
+    "id": 3,
+    "price": 50.0,
+    "isbn": "978-0321349606"
+}
