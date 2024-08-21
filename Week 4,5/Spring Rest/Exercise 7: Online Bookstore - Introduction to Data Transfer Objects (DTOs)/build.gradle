@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'org.mapstruct:mapstruct:1.5.2.Final'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.2.Final'
+    implementation 'org.modelmapper:modelmapper:2.4.5'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.0'
+}
