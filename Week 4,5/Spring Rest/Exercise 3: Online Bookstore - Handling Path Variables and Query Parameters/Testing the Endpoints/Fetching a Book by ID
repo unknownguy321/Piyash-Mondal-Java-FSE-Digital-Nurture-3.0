@@ -1,0 +1,11 @@
+Endpoint: GET /books/{id}
+Example Request: GET /books/1
+Expected Response:
+
+{
+    "id": 1,
+    "title": "Effective Java",
+    "author": "Joshua Bloch",
+    "price": 45.0,
+    "isbn": "978-0134685991"
+}
