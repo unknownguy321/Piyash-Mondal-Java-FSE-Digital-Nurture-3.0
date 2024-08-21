@@ -1,3 +1,0 @@
-Endpoint: GET /books/1
-Response Headers:
-Custom-Header: Book-Fetch-Success
