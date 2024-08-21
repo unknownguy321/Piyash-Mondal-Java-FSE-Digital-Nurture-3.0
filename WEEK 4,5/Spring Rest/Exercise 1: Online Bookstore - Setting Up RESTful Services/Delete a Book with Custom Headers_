@@ -1,0 +1,3 @@
+Endpoint: DELETE /books/1
+Response Headers:
+Custom-Header: Book-Deletion-Success

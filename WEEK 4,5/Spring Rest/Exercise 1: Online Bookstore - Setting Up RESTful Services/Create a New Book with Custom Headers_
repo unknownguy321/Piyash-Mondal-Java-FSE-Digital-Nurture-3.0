@@ -1,0 +1,3 @@
+Endpoint: POST /books
+Response Headers:
+Custom-Header: Book-Creation-Success
