@@ -1,0 +1,13 @@
+BookstoreAPI
+├── src
+│   ├── main
+│   │   ├── java
+│   │   │   └── com
+│   │   │       └── example
+│   │   │           └── bookstoreapi
+│   │   │               └── BookstoreApiApplication.java
+│   │   └── resources
+│   │       ├── application.properties
+│   │       └── static
+│   │       └── templates
+├── pom.xml
