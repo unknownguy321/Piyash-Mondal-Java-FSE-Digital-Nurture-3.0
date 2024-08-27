@@ -1,0 +1,6 @@
+Accessing the Swagger UI
+
+1) Start Your Application: Run your Spring Boot application.
+2) Access the Swagger UI: Open your browser and go to http://localhost:8080/swagger-ui.html (the default URL for Swagger UI).
+
+This UI will display all the endpoints with their details, as specified by the annotations you added.
