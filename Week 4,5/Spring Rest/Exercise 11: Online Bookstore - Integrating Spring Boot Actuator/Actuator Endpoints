@@ -1,0 +1,3 @@
+Health Endpoint: http://localhost:8080/actuator/health
+Metrics Endpoint: http://localhost:8080/actuator/metrics
+Custom Metric: http://localhost:8080/actuator/metrics/bookstore.books.sold
