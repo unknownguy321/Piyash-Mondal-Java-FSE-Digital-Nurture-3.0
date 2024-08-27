@@ -1,0 +1,9 @@
+<dependencies>
+    <!-- Spring Boot Actuator -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    
+    <!-- Other dependencies (e.g., spring-boot-starter-web) -->
+</dependencies>
