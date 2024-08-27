@@ -1,0 +1,8 @@
+For JSON Response:
+
+GET /api/books?mediaType=json
+
+
+For XML Response:
+
+GET /api/books?mediaType=xml
