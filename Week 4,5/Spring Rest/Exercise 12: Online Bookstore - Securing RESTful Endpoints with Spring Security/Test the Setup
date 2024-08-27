@@ -1,0 +1,8 @@
+Authentication: Make a POST request to /api/authenticate with a valid username and password to obtain a JWT token.
+Accessing Secure Endpoints: Use the obtained JWT token as a Bearer token in the Authorization header to access secure endpoints.
+
+Example of a Secure Request:
+
+GET /api/books HTTP/1.1
+Host: localhost:8080
+Authorization: Bearer your_jwt_token_here

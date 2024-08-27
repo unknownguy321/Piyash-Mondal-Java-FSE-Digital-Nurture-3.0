@@ -1,0 +1,16 @@
+<dependencies>
+    <!-- Spring Boot Starter Security -->
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-security</artifactId>
+    </dependency>
+
+    <!-- JWT (JSON Web Token) support -->
+    <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt</artifactId>
+        <version>0.11.5</version>
+    </dependency>
+
+    <!-- Other dependencies -->
+</dependencies>
